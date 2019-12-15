@@ -292,27 +292,19 @@ void panTompkins()
 			break;
 		sample++; // Update sample counter
 
-		// DC Block filter
-		// This was not proposed on the original paper.
-		// It is not necessary and can be removed if your sensor or database has no DC noise.
-		if (current >= 1)
-			dcblock[current] = signal[current] - signal[current-1] + 0.995*dcblock[current-1];
-		else
-			dcblock[current] = 0;
-
 		// Low Pass filter
 		// Implemented as proposed by the original paper.
 		// y(nT) = 2y(nT - T) - y(nT - 2T) + x(nT) - 2x(nT - 6T) + x(nT - 12T)
 		// Can be removed if your signal was previously filtered, or replaced by a different filter.
-		lowpass[current] = dcblock[current];
+		lowpass[current] = signal[current];
 		if (current >= 1)
-			lowpass[current] += 2*lowpass[current-1];
-		if (current >= 2)
-			lowpass[current] -= lowpass[current-2];
+			lowpass[current] += 2*signal[current-1];
 		if (current >= 6)
-			lowpass[current] -= 2*dcblock[current-6];
+			lowpass[current] -= signal[current-6];
+		if (current >= 8)
+			lowpass[current] -= 8*signal[current-8];
 		if (current >= 12)
-			lowpass[current] += dcblock[current-12];
+			lowpass[current] += 4*signal[current-12];
 
 		// High Pass filter
 		// Implemented as proposed by the original paper.
@@ -334,6 +326,20 @@ void panTompkins()
         derivative[current] = highpass[current];
 		if (current > 0)
 			derivative[current] -= highpass[current-1];
+
+		derivative[current] = highpass[current];
+		if(current <= BUFFSIZE-2)
+			derivative[current] -= derivative[current + 2]; 
+		if(current <= BUFFSIZE-1)
+			derivative[current] += derivative[current + 1];
+		if(current >= 1)
+			derivative[current] -= 8*derivative[current -1];
+		if(current >= 2)
+			derivative[current] += derivative[current - 2];
+
+		derivative[current] /= 12;
+
+
 
 		// This just squares the derivative, to get rid of negative values and emphasize high frequencies.
 		// y(nT) = [x(nT)]^2.
