@@ -1,6 +1,7 @@
 # Modified-Pan-Tompkins-For-Cardiac-Activity-in-Microgravity
 Modifications to Pan-Tompkins Algorithm for QRS detection, compensating for left ventricular atrophy as seen in 3-lead ECG signals 
-What does microgravity do to cardiac structure?
+
+## What does microgravity do to cardiac structure?
 
 - Lengthened Ventricular Depolarization >> Unchanged QRS sequence but increased QT interval >> wider T-wave
 
@@ -12,15 +13,19 @@ This algorithm modifies [this](https://github.com/rafaelmmoreira/PanTompkinsQRS)
 
 ![Flowchart](https://github.com/RishiKakade/Modified-Pan-Tompkins-For-Cardiac-Activity-in-Microgravity/blob/master/flowchart.PNG)
 
-*1.* Remove DC component correction
+## Modifications
 
-*2.* New difference function on lowpass filter
+**1. Remove DC component correction**
+
+**2. New difference function on lowpass filter**
+
 The cascaded band pass described in the 1985 [paper](https://sci-hub.tw/10.1109/tbme.1985.325532) removes 5-12Hz, albeit 5-15 was intended. New passband is 7-12Hz.
 
 Difference Function:
 ![Difference Equation 1](https://github.com/RishiKakade/Modified-Pan-Tompkins-For-Cardiac-Activity-in-Microgravity/blob/master/diff1.PNG)
 
-*3.* 5-Point Stencil Differentiation
+**3. 5-Point Stencil Differentiation**
+
 Replaced the numerical differentiation using the central difference method (I guess a 3-point stencil??) with a slight modification to the 5-point used in the original. The 5-point is marginally less efficient but more accurate (O(4) instead of O(1)). I also recomputed the calculation for the difference equation and realized a few coefficients were different. I compared the amplitude response of both and they seem to be linear between 0-30Hz. I decided to implement mine because of the work I put into realizing that Taylor expansions from Calc II are actually useful, and in the interest of learning something.
 
 Difference Function:
