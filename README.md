@@ -1,11 +1,13 @@
 # Modified-Pan-Tompkins-For-Cardiac-Activity-in-Microgravity
 Modifications to Pan-Tompkins Algorithm for QRS detection, compensating for left ventricular atrophy as seen in 3-lead ECG signals 
 
-## What does microgravity do to cardiac structure?
+## What does microgravity do to cardiac structure? 
 
 - Lengthened Ventricular Depolarization >> Unchanged QRS sequence but increased QT interval >> wider T-wave
 
 - Left Ventricular Atrophy >> Higher amplitude T-wave
+
+- [proof](https://en.wikipedia.org/wiki/Cardiac_rhythm_problems_during_space_flight#cite_ref-Myerburg_et_al_1989_(1)_1-0), [more proof](http://www.cinc.org/2018/preprints/358_CinCFinalPDF.pdf), [more more proof](https://www.researchgate.net/publication/235387666_Microgravity_effects_on_ventricular_response_to_heart_rate_changes), [also rats](https://ieeexplore.ieee.org/document/8743889)
 
 The effects on the left ventricle necessitate changes in the algorithm to better distinguish R peaks from T peaks.
 
