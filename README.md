@@ -26,7 +26,7 @@ Difference Function:
 
 **3. 5-Point Stencil Differentiation**
 
-Replaced the numerical differentiation using the central difference method (I guess a 3-point stencil??) with a slight modification to the 5-point used in the original. The 5-point is marginally less efficient but more accurate (O(4) instead of O(1)). I also recomputed the calculation for the difference equation and realized a few coefficients were different. I compared the amplitude response of both and they seem to be linear between 0-30Hz. I decided to implement mine because of the work I put into realizing that Taylor expansions from Calc II are actually useful, and in the interest of learning something.
+Replaced the numerical differentiation using the central difference method (I guess a 3-point stencil??) with a slight modification to the 5-point used in the original. The 5-point is marginally less efficient but more accurate (O(4) instead of O(1)). I also recalculated  the difference equation and realized a few coefficients were different. I compared the amplitude response of both and they seem to be linear between 0-30Hz. I decided to implement mine because of the work I put into realizing that Taylor expansions from Calc II are actually useful, and in the interest of learning something.
 
 Difference Function:
 ![Difference Equation 1](https://github.com/RishiKakade/Modified-Pan-Tompkins-For-Cardiac-Activity-in-Microgravity/blob/master/diff2.PNG)
