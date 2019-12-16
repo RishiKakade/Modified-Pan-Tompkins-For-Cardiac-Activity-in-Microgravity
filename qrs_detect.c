@@ -2,12 +2,15 @@
  * ------------------------------------------------------------------------------*
  * File: panTompkins.c                                                           *
  *       ANSI-C implementation of Pan-Tompkins real-time QRS detection algorithm *
- * Author: Rafael de Moura Moreira <rafaelmmoreira@gmail.com>                    *
+ * Author: Rafael de Moura Moreira <rafaelmmoreira@gmail.com> 					 *
+ * Modifications: Rishi Kakade <rkakade@uwaterloo.ca>                    	     *
  * License: MIT License                                                          *
  * ------------------------------------------------------------------------------*
  * ---------------------------------- HISTORY ---------------------------------- *
  *    date   |    author    |                     description                    *
  * ----------| -------------| ---------------------------------------------------*
+ * 2019/12/14| Rishikesh K.	| - Removed DC dorrection, and diffrence functions   *
+ * 							  for differentiation and lowpass filter 			 *
  * 2019/04/11| Rafael M. M. | - Fixed moving-window integral.                    *
  *           |              | - Fixed how to find the correct sample with the    *
  *           |              | last QRS.                                          *
