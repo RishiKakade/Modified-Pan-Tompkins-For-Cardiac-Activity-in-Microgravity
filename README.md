@@ -35,6 +35,6 @@ Difference Function:
 
 ![Difference Equation 1](https://github.com/RishiKakade/Modified-Pan-Tompkins-For-Cardiac-Activity-in-Microgravity/blob/master/diff2.PNG)
 
-Its even possible to calculate error, although it would be exceedingly difficult to implement, requiring very high ordered derivatives to be computed:
+Its even possible to calculate error:
 
 ![Error](https://github.com/RishiKakade/Modified-Pan-Tompkins-For-Cardiac-Activity-in-Microgravity/blob/master/error.PNG)
